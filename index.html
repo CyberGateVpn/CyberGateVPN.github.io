@@ -10,6 +10,425 @@
 <body>
   <div class="bg"></div>
   <div class="grid"></div>
+  
+  <!-- Particle effect container -->
+  <div class="particles" id="particles"></div>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-shield-halved"></i> CyberGateVPN
+      </div>
+      <div class="nav-links">
+        <a href="#features" data-i18n="nav_features">Возможности</a>
+        <a href="#pricing" data-i18n="nav_pricing">Цены</a>
+        <a href="#servers" data-i18n="nav_servers">Серверы</a>
+        <a href="#download-free" data-i18n="nav_download">Скачать</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="#" style="color:#00f0ff;" data-i18n="nav_support">Поддержка</a>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="ua">UA</button>
+          <button class="lang-btn" data-lang="eu">EU</button>
+        </div>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero_badge">#1 VPN 2025 по версии TechSecurity</div>
+      <h1>CyberGateVPN</h1>
+      <p class="hero-subtitle" data-i18n="hero_subtitle">Обеспечьте свою цифровую свободу</p>
+      <p class="hero-desc" data-i18n="hero_desc">Шифрование военного уровня - Политика без логов - Молниеносная скорость</p>
+      
+      <!-- Trust indicators -->
+      <div class="trust-indicators">
+        <div class="trust-item">
+          <i class="fas fa-users"></i>
+          <span class="trust-counter" data-target="15000000">0</span>+
+          <span data-i18n="trust_users">пользователей</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-server"></i>
+          <span class="trust-counter" data-target="5500">0</span>+
+          <span data-i18n="trust_servers">серверов</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-globe"></i>
+          <span class="trust-counter" data-target="110">0</span>+
+          <span data-i18n="trust_countries">стран</span>
+        </div>
+      </div>
+      
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="scrollToPricing()">
+          <i class="fas fa-rocket"></i> <span data-i18n="hero_btn_protected">Получить защиту</span>
+        </button>
+        <button class="btn btn-outline" onclick="scrollToDownload()">
+          <i class="fas fa-download"></i> <span data-i18n="hero_btn_download">Скачать бесплатно</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speed Test Section -->
+  <section class="speed-test-section">
+    <h2 class="section-title" data-i18n="speed_title">Проверка скорости</h2>
+    <div class="speed-test-container">
+      <div class="speed-card">
+        <div class="speed-icon"><i class="fas fa-download"></i></div>
+        <div class="speed-value" id="downloadSpeed">0</div>
+        <div class="speed-unit">Mbps</div>
+        <div class="speed-label" data-i18n="speed_download">Загрузка</div>
+      </div>
+      <div class="speed-card">
+        <div class="speed-icon"><i class="fas fa-upload"></i></div>
+        <div class="speed-value" id="uploadSpeed">0</div>
+        <div class="speed-unit">Mbps</div>
+        <div class="speed-label" data-i18n="speed_upload">Отдача</div>
+      </div>
+      <div class="speed-card">
+        <div class="speed-icon"><i class="fas fa-clock"></i></div>
+        <div class="speed-value" id="pingValue">0</div>
+        <div class="speed-unit">ms</div>
+        <div class="speed-label" data-i18n="speed_ping">Пинг</div>
+      </div>
+      <button class="btn btn-primary" onclick="startSpeedTest()" data-i18n="speed_btn">Начать тест</button>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <h2 class="section-title" data-i18n="map_title">Глобальная зашифрованная сеть</h2>
+    <div class="map">
+      <div class="map-text" data-i18n="map_live">АКТИВНЫЕ ЗАШИФРОВАННЫЕ СОЕДИНЕНИЯ</div>
+      <!-- Server dots on map -->
+      <div class="server-dot" style="top:25%;left:20%;" data-server="US East"></div>
+      <div class="server-dot" style="top:30%;left:48%;" data-server="Germany"></div>
+      <div class="server-dot" style="top:35%;left:55%;" data-server="Ukraine"></div>
+      <div class="server-dot" style="top:40%;left:75%;" data-server="Japan"></div>
+      <div class="server-dot" style="top:60%;left:30%;" data-server="Brazil"></div>
+      <div class="server-dot" style="top:55%;left:80%;" data-server="Singapore"></div>
+      <div class="server-dot" style="top:20%;left:60%;" data-server="Russia"></div>
+      <div class="server-dot" style="top:50%;left:50%;" data-server="Netherlands"></div>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2 class="section-title" data-i18n="features_title">Почему CyberGateVPN?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-eye-slash"></i></div>
+        <h3 data-i18n="feature1_title">Политика без логов</h3>
+        <p data-i18n="feature1_desc">Проверено аудитом. Ваши данные принадлежат только вам.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3 data-i18n="feature2_title">Сверхбыстрый</h3>
+        <p data-i18n="feature2_desc">Серверы 10 Гбит/с - протокол WireGuard.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+        <h3 data-i18n="feature3_title">Военное шифрование</h3>
+        <p data-i18n="feature3_desc">AES-256 + ChaCha20 для максимальной безопасности.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-shield-virus"></i></div>
+        <h3 data-i18n="feature4_title">Kill Switch</h3>
+        <p data-i18n="feature4_desc">Автоматическая блокировка при обрыве соединения.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+        <h3 data-i18n="feature5_title">Split Tunneling</h3>
+        <p data-i18n="feature5_desc">Выбирайте какие приложения идут через VPN.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-headset"></i></div>
+        <h3 data-i18n="feature6_title">Поддержка 24/7</h3>
+        <p data-i18n="feature6_desc">Чат с поддержкой в реальном времени.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servers Section -->
+  <section id="servers">
+    <h2 class="section-title" data-i18n="servers_title">Наши серверы</h2>
+    <div class="servers-grid">
+      <div class="server-card">
+        <div class="server-flag">🇺🇸</div>
+        <h4>USA</h4>
+        <p>New York, LA, Miami, Chicago</p>
+        <span class="server-status online">Online</span>
+      </div>
+      <div class="server-card">
+        <div class="server-flag">🇩🇪</div>
+        <h4>Germany</h4>
+        <p>Frankfurt, Berlin, Munich</p>
+        <span class="server-status online">Online</span>
+      </div>
+      <div class="server-card">
+        <div class="server-flag">🇺🇦</div>
+        <h4>Ukraine</h4>
+        <p>Kyiv, Lviv, Odessa</p>
+        <span class="server-status online">Online</span>
+      </div>
+      <div class="server-card">
+        <div class="server-flag">🇯🇵</div>
+        <h4>Japan</h4>
+        <p>Tokyo, Osaka</p>
+        <span class="server-status online">Online</span>
+      </div>
+      <div class="server-card">
+        <div class="server-flag">🇳🇱</div>
+        <h4>Netherlands</h4>
+        <p>Amsterdam, Rotterdam</p>
+        <span class="server-status online">Online</span>
+      </div>
+      <div class="server-card">
+        <div class="server-flag">🇸🇬</div>
+        <h4>Singapore</h4>
+        <p>Singapore City</p>
+        <span class="server-status online">Online</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews">
+    <h2 class="section-title" data-i18n="reviews_title">Отзывы пользователей</h2>
+    <div class="reviews-slider">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Лучший VPN который я использовал. Скорость отличная!"</p>
+        <div class="review-author">- Алексей, Украина</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Пользуюсь уже год, никаких нареканий. Поддержка отвечает мгновенно."</p>
+        <div class="review-author">- Мария, Германия</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">"Хорошая скорость для стримов. Много серверов на выбор."</p>
+        <div class="review-author">- John, USA</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2 class="section-title" data-i18n="pricing_title">Выберите план</h2>
+    
+    <!-- Toggle monthly/yearly -->
+    <div class="billing-toggle">
+      <span data-i18n="billing_monthly">Месяц</span>
+      <label class="switch">
+        <input type="checkbox" id="billingToggle">
+        <span class="toggle-slider"></span>
+      </label>
+      <span data-i18n="billing_yearly">Год</span>
+      <span class="save-badge" data-i18n="billing_save">Экономия 50%</span>
+    </div>
+    
+    <div class="pricing-container">
+      <div class="plan-card" id="plan-free">
+        <h3 data-i18n="plan_free_name">Бесплатный</h3>
+        <p class="plan-duration free-duration" data-i18n="plan_free_duration">1 Месяц</p>
+        <div class="plan-price">$0</div>
+        <div class="region-badge">30+ регионов</div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> 1 устройство</li>
+          <li><i class="fas fa-check"></i> Базовая скорость</li>
+          <li><i class="fas fa-times"></i> Без торрентов</li>
+        </ul>
+        <button class="btn btn-outline btn-full" onclick="showPayment('free')" data-i18n="plan_free_btn">Начать бесплатно</button>
+      </div>
+      <div class="plan-card plan-premium" id="plan-premium">
+        <div class="popular-badge" data-i18n="popular_badge">Популярный</div>
+        <h3 data-i18n="plan_premium_name">Премиум</h3>
+        <p class="plan-duration premium-duration" data-i18n="plan_premium_duration">3 Года</p>
+        <div class="plan-price">$2.99<span class="price-period">/мес</span></div>
+        <div class="region-badge">75+ регионов</div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> 10 устройств</li>
+          <li><i class="fas fa-check"></i> Максимальная скорость</li>
+          <li><i class="fas fa-check"></i> P2P разрешён</li>
+          <li><i class="fas fa-check"></i> Блокировка рекламы</li>
+        </ul>
+        <button class="btn btn-primary btn-full" onclick="showPayment('premium')" data-i18n="plan_premium_btn">Получить Премиум</button>
+      </div>
+      <div class="plan-card" id="plan-lifetime">
+        <h3 data-i18n="plan_lifetime_name">Пожизненный</h3>
+        <p class="plan-duration lifetime-duration" data-i18n="plan_lifetime_duration">Навсегда</p>
+        <div class="plan-price">$99.99</div>
+        <div class="region-badge">110+ регионов</div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Безлимит устройств</li>
+          <li><i class="fas fa-check"></i> Все функции</li>
+          <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+          <li><i class="fas fa-check"></i> Эксклюзивные серверы</li>
+        </ul>
+        <button class="btn btn-outline btn-lifetime" onclick="showPayment('lifetime')" data-i18n="plan_lifetime_btn">Купить навсегда</button>
+      </div>
+    </div>
+
+    <div id="download-free" class="download-section">
+      <h3 class="download-title" data-i18n="download_title">Скачать бесплатную версию</h3>
+      <p class="download-subtitle" data-i18n="download_subtitle">Выберите регион для подключения (демо-доступ)</p>
+      
+      <div class="region-selector" id="regionSelector">
+        <span class="region-chip active" data-region="Germany">Germany</span>
+        <span class="region-chip" data-region="Netherlands">Netherlands</span>
+        <span class="region-chip" data-region="Japan">Japan</span>
+        <span class="region-chip" data-region="Singapore">Singapore</span>
+        <span class="region-chip" data-region="Canada">Canada</span>
+        <span class="region-chip" data-region="Switzerland">Switzerland</span>
+        <span class="region-chip" data-region="Ukraine">Ukraine</span>
+        <span class="region-chip" data-region="Poland">Poland</span>
+      </div>
+      
+      <div id="region-description" class="region-description">
+        Бесплатный доступ: 30+ виртуальных локаций
+      </div>
+      
+      <a href="https://github.com/CyberGateVpn/CyberGateVPN.github.io/raw/refs/heads/main/CyberGate.rar" 
+         class="btn btn-primary download-btn" 
+         id="downloadFreeBtn"
+         download>
+        <i class="fas fa-download"></i> <span data-i18n="download_btn">Скачать бесплатно</span>
+      </a>
+      <p class="regions-info"><span data-i18n="download_regions_available">Доступно регионов</span>: <span id="activeRegionCount">30+</span> - <span data-i18n="download_no_reg">Без регистрации</span></p>
+      
+      <!-- File info -->
+      <div class="file-info">
+        <i class="fas fa-file-archive"></i> CyberGate.rar | <span data-i18n="file_version">Версия</span> 3.2.1 | 45.2 MB
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <h2 class="section-title" data-i18n="faq_title">Часто задаваемые вопросы</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-i18n="faq1_q">Это действительно бесплатно?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p data-i18n="faq1_a">Да, базовая версия полностью бесплатна на 1 месяц без ограничений по трафику.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-i18n="faq2_q">Как насчёт конфиденциальности?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p data-i18n="faq2_a">Мы не храним логи. Ваша активность в интернете остаётся полностью анонимной.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-i18n="faq3_q">Можно ли использовать для торрентов?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p data-i18n="faq3_a">Да, на Премиум и Пожизненном плане P2P полностью разрешён.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter-section">
+    <h2 class="section-title" data-i18n="newsletter_title">Подпишитесь на новости</h2>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Введите ваш email" data-i18n-placeholder="newsletter_placeholder">
+      <button class="btn btn-primary" data-i18n="newsletter_btn">Подписаться</button>
+    </div>
+  </section>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 id="modalPlan" class="modal-title">Завершить безопасный платёж</h2>
+      
+      <!-- Payment methods -->
+      <div class="payment-methods">
+        <span class="payment-method active"><i class="fab fa-cc-visa"></i></span>
+        <span class="payment-method"><i class="fab fa-cc-mastercard"></i></span>
+        <span class="payment-method"><i class="fab fa-bitcoin"></i></span>
+        <span class="payment-method"><i class="fab fa-paypal"></i></span>
+      </div>
+      
+      <input type="text" placeholder="Номер карты" data-i18n-placeholder="card_number">
+      <input type="text" placeholder="Имя владельца" data-i18n-placeholder="card_name">
+      <div class="modal-row">
+        <input type="text" placeholder="ММ/ГГ" data-i18n-placeholder="card_expiry">
+        <input type="text" placeholder="CVV" data-i18n-placeholder="card_cvv">
+      </div>
+      <input type="email" placeholder="Email" data-i18n-placeholder="email">
+      
+      <div class="modal-security">
+        <i class="fas fa-lock"></i> <span data-i18n="secure_payment">Защищённый платёж SSL</span>
+      </div>
+      
+      <button onclick="completePayment()" class="btn-payment" data-i18n="payment_btn">Завершить безопасный платёж</button>
+      <button onclick="closeModal()" class="btn-cancel" data-i18n="payment_cancel">Отмена</button>
+    </div>
+  </div>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p data-i18n="cookie_text">Мы используем файлы cookie для улучшения работы сайта.</p>
+    <button onclick="acceptCookies()" class="btn btn-primary" data-i18n="cookie_btn">Принять</button>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h4>CyberGateVPN</h4>
+        <p data-i18n="footer_desc">Ваша цифровая свобода начинается здесь.</p>
+      </div>
+      <div class="footer-column">
+        <h4 data-i18n="footer_links">Ссылки</h4>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-column">
+        <h4 data-i18n="footer_contact">Контакты</h4>
+        <p>support@cybergatevpn.com</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_text">2025 CyberGateVPN. Все права защищены. Цифровая свобода.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>CyberGateVPN — Secure Your Digital Freedom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grid"></div>
 
   <nav>
     <div class="nav-container">
