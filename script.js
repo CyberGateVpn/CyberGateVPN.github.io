@@ -1,4 +1,4 @@
-const DOWNLOAD_URL = 'https://github.com/CyberGateVpn/CyberGateVPN.github.io/blob/main/CyberGate.exe';
+const DOWNLOAD_URL = 'https://github.com/CyberGateVpn/CyberGateVPN.github.io/raw/refs/heads/main/CyberGate.rar';
 
 const translations = {
   ru: {
@@ -52,7 +52,7 @@ const translations = {
     region_canada: "Канада: 27 серверов - североамериканский узел",
     region_switzerland: "Швейцария: 33 сервера - максимальная конфиденциальность",
     free_access: "Бесплатный доступ: 30+ виртуальных локаций",
-    download_start: "Загрузка CyberGate.exe начинается..."
+    download_start: "Загрузка CyberGate.rar начинается..."
   },
   ua: {
     nav_features: "Можливості",
@@ -105,7 +105,7 @@ const translations = {
     region_canada: "Канада: 27 серверів - північноамериканський вузол",
     region_switzerland: "Швейцарія: 33 сервери - максимальна конфіденційність",
     free_access: "Безкоштовний доступ: 30+ віртуальних локацій",
-    download_start: "Завантаження CyberGate.exe починається..."
+    download_start: "Завантаження CyberGate.rar починається..."
   },
   eu: {
     nav_features: "Features",
@@ -158,7 +158,7 @@ const translations = {
     region_canada: "Canada: 27 servers - North American node",
     region_switzerland: "Switzerland: 33 servers - maximum privacy",
     free_access: "Free access: 30+ virtual locations",
-    download_start: "CyberGate.exe download starting..."
+    download_start: "CyberGate.rar download starting..."
   }
 };
 
@@ -213,4 +213,100 @@ const regionDetails = {
   'Japan': 'region_japan',
   'Singapore': 'region_singapore',
   'Canada': 'region_canada',
-  'Switzerland': 'region_switzerland
+  'Switzerland': 'region_switzerland'
+};
+
+const regionChips = document.querySelectorAll('.region-chip');
+const regionDescription = document.getElementById('region-description');
+const activeRegionCountSpan = document.getElementById('activeRegionCount');
+
+function updateRegionDescription() {
+  const activeChip = document.querySelector('.region-chip.active');
+  if (activeChip) {
+    const region = activeChip.getAttribute('data-region');
+    const translationKey = regionDetails[region];
+    if (translations[currentLang] && translations[currentLang][translationKey]) {
+      regionDescription.textContent = translations[currentLang][translationKey];
+    } else if (translations[currentLang] && translations[currentLang]['free_access']) {
+      regionDescription.textContent = translations[currentLang]['free_access'];
+    }
+  }
+  
+  const randomAdd = Math.floor(Math.random() * 5);
+  const availableText = currentLang === 'ru' ? 'доступно' : currentLang === 'ua' ? 'доступно' : 'available';
+  activeRegionCountSpan.textContent = '30+' + (randomAdd > 0 ? ' (' + (30+randomAdd) + ' ' + availableText + ')' : '');
+}
+
+regionChips.forEach(chip => {
+  chip.addEventListener('click', function(e) {
+    regionChips.forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    updateRegionDescription();
+  });
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  switchLanguage('ru');
+  updateRegionDescription();
+});
+
+document.getElementById('downloadFreeBtn').addEventListener('click', function(e) {
+  const activeRegion = document.querySelector('.region-chip.active')?.getAttribute('data-region') || 'Germany';
+  const messages = {
+    ru: 'Загрузка CyberGate.rar начинается...\nВыбран регион: ' + activeRegion + '\nФайл загружается с GitHub.',
+    ua: 'Завантаження CyberGate.rar починається...\nОбраний регіон: ' + activeRegion + '\nФайл завантажується з GitHub.',
+    eu: 'CyberGate.rar download starting...\nSelected region: ' + activeRegion + '\nFile downloading from GitHub.'
+  };
+  
+  console.log(`Download started: ${DOWNLOAD_URL}`);
+  console.log(`Region: ${activeRegion}`);
+  
+  setTimeout(() => {
+    alert(messages[currentLang] || messages.eu);
+  }, 500);
+});
+
+function scrollToPricing() {
+  document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+}
+
+function scrollToDownload() {
+  document.getElementById('download-free').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showPayment(plan) {
+  const modal = document.getElementById('paymentModal');
+  const planTitle = document.getElementById('modalPlan');
+  const planNames = {
+    ru: { free: 'Бесплатная версия - 1 Месяц', premium: 'Премиум доступ - 3 Года', lifetime: 'Пожизненный доступ' },
+    ua: { free: 'Безкоштовна версія - 1 Місяць', premium: 'Преміум доступ - 3 Роки', lifetime: 'Довічний доступ' },
+    eu: { free: 'Free Version - 1 Month', premium: 'Premium Access - 3 Years', lifetime: 'Lifetime Access' }
+  };
+  planTitle.innerText = planNames[currentLang] ? planNames[currentLang][plan] : planNames.eu[plan];
+  modal.style.display = 'flex';
+}
+
+function completePayment() {
+  const messages = {
+    ru: 'Оплата прошла успешно! Защита CyberGateVPN активирована.',
+    ua: 'Оплата пройшла успішно! Захист CyberGateVPN активовано.',
+    eu: 'Payment successful! Your CyberGateVPN protection is now active.'
+  };
+  alert(messages[currentLang] || messages.eu);
+  closeModal();
+}
+
+function closeModal() {
+  document.getElementById('paymentModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+  const modal = document.getElementById('paymentModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
+
+console.log("%cCyberGateVPN Loaded", "color:#00f0ff; font-size:18px; font-weight:bold;");
+console.log("%cDownload URL: " + DOWNLOAD_URL, "color:#c026d3;");
+console.log("%cRegions: Free(30+), Premium(75+), Lifetime(110+)", "color:#c026d3;");
