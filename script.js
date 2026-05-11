@@ -1,4 +1,4 @@
-const DOWNLOAD_URL = 'https://github.com/CyberGateVpn/CyberGateVPN.github.io/raw/refs/heads/main/CyberGate.rar';
+const DOWNLOAD_URL = 'https://github.com/CyberGateVpn/CyberGateVPN.github.io/raw/refs/heads/main/CyberGateVpn.rar';
 
 const translations = {
   ru: {
